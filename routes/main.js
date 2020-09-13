@@ -36,6 +36,11 @@ router.post('/favorites', isLoggedIn, async (req, res) => {
   })
   user.save();
   res.redirect('/account')
+});
+
+router.post('/favorites_calendar', isLoggedIn, (req, res) => {
+  console.log(req.body);
+  res.render('index_favorites', {meals: req.body.meals});
 })
 
 // 404

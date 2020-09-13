@@ -1,0 +1,38 @@
+<%- include('partials/header') %>
+
+  <div class="container">
+    <div class="jumbotron mt-4 py-4">
+      <h1 class='display-4'>What's for Dinner?</h1>
+      <hr class='my-3'>
+      <p>Simplifying the dreaded task of deciding what to eat.</p>
+    </div>
+    <form action="/calendar" method="POST">
+      <h3>Enter the meals you want included</h3>
+      <p>You can also choose how many times you want them repeated</p>
+      <hr>
+      <div id="meal-container">
+        <% meals.forEach((meal, i) => { %>
+          <div class="row mt-2">
+            <div class="col-7">
+              <input class="form-control" type="text" name="meals[<%= i %>][name]" value="<%= meal.name %>">
+              <input type="hidden" name="meals[<%= i %>][link]" value="<%= meal.link ? meal.link : '' %>">
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" name="meals[<%= i %>][quantity]" value="1">
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-danger delete-btn">X</button>
+            </div>
+          </div>
+        <% }) %>
+
+      </div>
+
+      <button class="btn btn-success btn-block mt-3" type="button" id="addInput">Add</button>
+      <button class="btn btn-primary btn-block mt-3" type="submit">Go!</button>
+    </form>
+  </div>
+
+<%- include('partials/bootstrap_footer') %>
+<script src="/js/index.js"></script>
+<%- include('partials/footer') %>
