@@ -18,8 +18,7 @@ router.post("/calendar", (req, res) => {
       })
     }
   })
-  // Shuffle meals array
-  // Note that this will often have back-to-back meals - need to fix in the future.
+  // Shuffle meals array - Note that this will often have back-to-back meals; need to fix.
   meals = meals.sort(() => Math.random() - 0.5);
   console.log(meals);
   res.render('calendar', {meals});
@@ -30,18 +29,12 @@ router.get('/favorites', isLoggedIn, (req, res) => {
 });
 
 router.post('/favorites', isLoggedIn, async (req, res) => {
-  // Get user
   const user = await User.findById(req.user._id);
   // Add all recipes to user
-  console.log(user.favoriteMeals)
   req.body.meals.forEach((meal) => {
     user.favoriteMeals.push(meal);
   })
-  console.log(user.favoriteMeals)
-
-  // Save user
   user.save();
-  // Redirect
   res.redirect('/account')
 })
 
