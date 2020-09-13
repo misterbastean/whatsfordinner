@@ -6,7 +6,21 @@ router.get("/", (req, res) => {
 });
 
 router.post("/calendar", (req, res) => {
-  res.render('calendar');
+  let meals = [];
+  // Duplicate meals based on selected number
+  req.body.meals.forEach((meal) => {
+    for(let i = 0; i < meal.quantity; i++) {
+      meals.push({
+        name: meal.name,
+        link: meal.link
+      })
+    }
+  })
+  // Shuffle meals array
+  // Note that this will often have back-to-back meals - need to fix in the future.
+  meals = meals.sort(() => Math.random() - 0.5);
+  console.log(meals);
+  res.render('calendar', {meals});
 });
 
 // 404
