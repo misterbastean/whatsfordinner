@@ -20,7 +20,6 @@ router.post("/calendar", (req, res) => {
   })
   // Shuffle meals array - Note that this will often have back-to-back meals; need to fix.
   meals = meals.sort(() => Math.random() - 0.5);
-  console.log(meals);
   res.render('calendar', {meals});
 });
 
@@ -49,7 +48,6 @@ router.post('/favorites_calendar', isLoggedIn, (req, res) => {
 })
 
 router.post('/favorites_delete', isLoggedIn, async (req, res) => {
-  console.log(req.body);
   // Get array of meal names to be removed
   const mealsToRemove = [];
   req.body.meals.forEach((meal) => {
@@ -57,7 +55,6 @@ router.post('/favorites_delete', isLoggedIn, async (req, res) => {
       mealsToRemove.push(meal.name);
     }
   })
-  console.log("mealsToRemove:", mealsToRemove);
   // Get user
   const user = await User.findById(req.user._id);
   // Delete matching items from user.favoriteMeals array
@@ -67,7 +64,6 @@ router.post('/favorites_delete', isLoggedIn, async (req, res) => {
       return meal.name !== mealToRemove;
     })
   })
-  console.log("updatedMeals", updatedMeals);
   user.favoriteMeals = updatedMeals;
   // Save user
   user.save();
