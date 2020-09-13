@@ -1,15 +1,15 @@
-$(document).ready(() => {
+$(document).ready(function() {
   let mealIndex = 10;
-  $('#addInput').on('click', () => {
+  $('#addInput').on('click', function() {
     const mealHtml = `
     <div class="row mt-2">
-      <div class="col-9">
+      <div class="col-7">
         <input class="form-control" type="text" name="meals[${mealIndex}][name]">
       </div>
-      <div class="col-2">
+      <div class="col">
         <input class="form-control" type="number" name="meals[${mealIndex}][quantity]" value="1">
       </div>
-      <div class="col-1">
+      <div class="col">
         <button type="button" class="btn btn-danger" class="delete-btn">X</button>
       </div>
     </div>
