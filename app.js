@@ -1,16 +1,14 @@
 /* ==========================
 // TODO
 // ==========================
-CURRENT: - Set up index page
+CURRENT:
 - Add route to add favorite recipes
-- Add view to add favorite recipes
-- Add route to choose recipes for the calendar
-- Add view to choose recipes for the calendar
-- Add route to create and display the calendar
-- Add view to display the calendar
+- Add view to add favorite recipes (/favorites)
+- Add account show route
+- Add account view, including info and the ability to choose from favorite recipes, plus link to /favorites
 
 SOMEDAY:
-
+- Add functionality for breakfast and lunch as well
 */
 
 // ==========================
