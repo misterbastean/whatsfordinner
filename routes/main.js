@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const User = require('../models/user');
+const isLoggedIn = require('../utils/isLoggedIn');
 
 router.get("/", (req, res) => {
   res.render("index");
@@ -23,9 +25,25 @@ router.post("/calendar", (req, res) => {
   res.render('calendar', {meals});
 });
 
-router.get('/favorites', (req, res) => {
+router.get('/favorites', isLoggedIn, (req, res) => {
   res.render('favorites');
 });
+
+router.post('/favorites', isLoggedIn, async (req, res) => {
+  // Get user
+  const user = await User.findById(req.user._id);
+  // Add all recipes to user
+  console.log(user.favoriteMeals)
+  req.body.meals.forEach((meal) => {
+    user.favoriteMeals.push(meal);
+  })
+  console.log(user.favoriteMeals)
+
+  // Save user
+  user.save();
+  // Redirect
+  res.redirect('/account')
+})
 
 // 404
 router.get("*", (req, res) => {

@@ -15,7 +15,7 @@ router.post('/signup', async (req, res) => {
   console.log(newUser);
 
   passport.authenticate('local')(req, res, () => {
-    res.redirect('/');
+    res.redirect('/account');
   });
 });
 
@@ -24,7 +24,7 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
+  successRedirect: '/account',
   failureRedirect: '/login',
   // successFlash: "Logged in successfully",
   // failureFlash: true
