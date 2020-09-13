@@ -1,0 +1,26 @@
+<%- include('partials/header') %>
+
+<div class="container">
+  <h1>Add to Favorites!</h1>
+  <form action="/favorites" method="POST">
+    <div id="meal-container">
+      <div class="row my-2">
+        <div class="col-5">
+          <input class="form-control" type="text" name="meals[0][name]" autofocus>
+        </div>
+        <div class="col-6">
+          <input class="form-control" type="text" name="meals[0][link]" placeholder="https://www.link-to-recipe.com">
+        </div>
+        <div class="col-1">
+          <button type="button" class="btn btn-danger delete-btn" style="width: 100%;">X</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-success btn-block" type="button" id="addInput">Add Another!</button>
+    <button class="btn btn-primary btn-block" type="submit" name="button">Add All to Favorites</button>
+  </form>
+</div>
+
+<%- include('partials/bootstrap_footer') %>
+<script type="text/javascript" src="/js/favorites.js"></script>
+<%- include('partials/footer') %>

@@ -23,6 +23,10 @@ router.post("/calendar", (req, res) => {
   res.render('calendar', {meals});
 });
 
+router.get('/favorites', (req, res) => {
+  res.render('favorites');
+});
+
 // 404
 router.get("*", (req, res) => {
   res.send("404. Does not exist.")
