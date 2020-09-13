@@ -17,8 +17,11 @@
         </div>
         <hr>
       <% }) %>
-      <button class="btn btn-primary btn-block" type="submit">Add to Plan</button>
+      <button class="btn btn-primary btn-block" type="submit" id="addButton">Add Selected to Plan</button>
+      <button class="btn btn-danger btn-block" type="submit" id="deleteButton">Delete Selected</button>
     </form>
   </div>
 
+<%- include('partials/bootstrap_footer') %>
+<script src='/js/account.js'></script>
 <%- include('partials/footer') %>
