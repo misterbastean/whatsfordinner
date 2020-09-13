@@ -10,17 +10,27 @@
       <h3>Enter the meals you want included</h3>
       <p>You can also choose how many times you want them repeated</p>
       <hr>
-      <div class="row">
-        <div class="col-9">
-          <input class="form-control" type="text" name="meals[0][name]" id="meals[0]">
-        </div>
-        <div class="col-3">
-          <input class="form-control" type="number" name="meals[0][quantity]" value="1">
-        </div>
+      <div id="meal-container">
+        <% for(let i = 0; i < 10; i++) { %>
+          <div class="row mt-2">
+            <div class="col-9">
+              <input class="form-control" type="text" name="meals[<%= i %>][name]">
+            </div>
+            <div class="col-2">
+              <input class="form-control" type="number" name="meals[<%= i %>][quantity]" value="1">
+            </div>
+            <div class="col-1">
+              <button type="button" class="btn btn-danger delete-btn">X</button>
+            </div>
+          </div>
+        <% } %>
       </div>
-      <button class="btn btn-success btn-block mt-3" type="button" name="addInput">Add</button>
+
+      <button class="btn btn-success btn-block mt-3" type="button" id="addInput">Add</button>
       <button class="btn btn-primary btn-block mt-3" type="submit">Go!</button>
     </form>
   </div>
 
+<%- include('partials/bootstrap_footer') %>
+<script src="/js/index.js"></script>
 <%- include('partials/footer') %>
