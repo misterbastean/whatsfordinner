@@ -48,16 +48,31 @@ router.post('/favorites_calendar', isLoggedIn, (req, res) => {
   res.render('index_favorites', {meals});
 })
 
-router.post('/favorites_delete', isLoggedIn, (req, res) => {
+router.post('/favorites_delete', isLoggedIn, async (req, res) => {
   console.log(req.body);
+  // Get array of meal names to be removed
+  const mealsToRemove = [];
   req.body.meals.forEach((meal) => {
     if (meal.name) {
-      console.log(meal)
-    } else {
-      console.log("Not checked");
+      mealsToRemove.push(meal.name);
     }
   })
-  res.send("delete favorites route");
+  console.log("mealsToRemove:", mealsToRemove);
+  // Get user
+  const user = await User.findById(req.user._id);
+  // Delete matching items from user.favoriteMeals array
+  let updatedMeals = user.favoriteMeals;
+  mealsToRemove.forEach((mealToRemove) => {
+    updatedMeals = updatedMeals.filter((meal) => {
+      return meal.name !== mealToRemove;
+    })
+  })
+  console.log("updatedMeals", updatedMeals);
+  user.favoriteMeals = updatedMeals;
+  // Save user
+  user.save();
+  // Redirect back to /account
+  res.redirect('/account');
 });
 
 // 404
