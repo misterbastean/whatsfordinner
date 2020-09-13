@@ -1,5 +1,24 @@
 <%- include('partials/header') %>
 
-  <h1>Account Page Here</h1>
+  <div class="container">
+    <h1>My Account</h1>
+    <h4 class="mb-5"><%= user.username %></h4>
+    <h2>Favorite Meals</h2>
+    <form action="/favorites_calendar" method="POST">
+      <% user.favoriteMeals.forEach((meal, i) => { %>
+        <div class="row ml-2 my-3">
+          <div class="form-check my-auto">
+            <input class="form-check-input account-checkbox mt-3" type="checkbox" name="meals[<%= i %>][name]" value="<%= meal.name %>" id="<%= meal.name %>">
+            <label class="form-check-label ml-2" for="<%= meal.name %>" style="font-size: 1.6em;">
+              <%= meal.name %>
+            </label>
+            <input type="hidden" name="meals[<%= i %>][link]" value="<%= meal.link ? meal.link : '' %>">
+          </div>
+        </div>
+        <hr>
+      <% }) %>
+      <button class="btn btn-primary btn-block" type="submit">Add to Plan</button>
+    </form>
+  </div>
 
 <%- include('partials/footer') %>
