@@ -13,13 +13,13 @@
       <div id="meal-container">
         <% for(let i = 0; i < 10; i++) { %>
           <div class="row mt-2">
-            <div class="col-9">
+            <div class="col-7">
               <input class="form-control" type="text" name="meals[<%= i %>][name]">
             </div>
-            <div class="col-2">
+            <div class="col">
               <input class="form-control" type="number" name="meals[<%= i %>][quantity]" value="1">
             </div>
-            <div class="col-1">
+            <div class="col">
               <button type="button" class="btn btn-danger delete-btn">X</button>
             </div>
           </div>
