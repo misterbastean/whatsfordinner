@@ -1,3 +1,10 @@
 body {
   padding-bottom: 50px;
 }
+
+.calendar-card {
+  width: 13%;
+  margin: auto 0.64%;
+  min-height: 10em;
+  text-align: center;
+}
