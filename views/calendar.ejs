@@ -8,7 +8,7 @@
     <% meals.forEach((meal, i) => { %>
       <div class="card calendar-card my-3 pt-1 <%= i % 2 === 0 ? 'bg-light' : 'bg-white' %>">
         <% if (meal.link) { %>
-          <a href="<%= meal.link%>"><h5><%= meal.name %></h5></a>
+          <a href="<%= meal.link%>" target="_blank"><h5><%= meal.name %></h5></a>
         <% } else {%>
           <h5><%= meal.name %></h5>
         <% }%>
