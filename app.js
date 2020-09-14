@@ -1,11 +1,7 @@
 /* ==========================
 // TODO
 // ==========================
-CURRENT:
-- Add route to add favorite recipes
-- Add view to add favorite recipes (/favorites)
-- Add account show route
-- Add account view, including info and the ability to choose from favorite recipes, plus link to /favorites
+CURRENT: - Test and bugfix
 
 SOMEDAY:
 - Add functionality for breakfast and lunch as well
