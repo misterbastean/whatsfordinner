@@ -2,7 +2,8 @@
 
   <div class="container">
     <h1>My Account</h1>
-    <h4 class="mb-5"><%= user.username %></h4>
+    <h4 class="mb-4"><%= user.username %></h4>
+    <a class="btn btn-success mb-5" href="/favorites">Add to Favorites</a>
     <h2>Favorite Meals</h2>
     <form action="/favorites_calendar" method="POST">
       <% user.favoriteMeals.forEach((meal, i) => { %>
