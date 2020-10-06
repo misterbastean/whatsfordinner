@@ -62,13 +62,14 @@ try {
   mongoose.connect(config.db.connectionString, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
 } catch (e) {
   console.log("Could not connect to DB with config - likely not working locally.");
-  mongoose.connect(`mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_URL}`, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
+  mongoose.connect(process.env.DB_STRING, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
 }
 mongoose.Promise = global.Promise;
 
 // Express Session Config
+const secret = process.env.ES_SECRET ? process.env.ES_SECRET : "sdf987ysdf98f7tvs76dfr865arsfaa0sdf7gs87g2kaufydgasd"
 app.use(expressSession({
-	secret: "sdf987ysdf98f7tvs76dfr865arsfaa0sdf7gs87g2kaufydgasd",
+	secret,
 	resave: false,
 	saveUninitialized: false
 }));
