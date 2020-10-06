@@ -3,7 +3,7 @@ body {
 }
 
 .calendar-card {
-  width: 13%;
+  width: 6em;
   margin: auto 0.64%;
   min-height: 10em;
   text-align: center;
