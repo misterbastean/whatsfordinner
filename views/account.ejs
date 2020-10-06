@@ -6,8 +6,9 @@
     <h4 class="mb-4"><%= user.username %></h4>
     <a class="btn btn-success mb-5" href="/favorites">Add to Favorites</a>
     <h2>Favorite Meals</h2>
+    <% const sorted = user.favoriteMeals.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)); %>
     <form action="/favorites_calendar" method="POST">
-      <% user.favoriteMeals.forEach((meal, i) => { %>
+      <% sorted.forEach((meal, i) => { %>
         <div class="row ml-2 my-3">
           <div class="form-check my-auto">
             <input class="form-check-input account-checkbox mt-3" type="checkbox" name="meals[<%= i %>][name]" value="<%= meal.name %>" id="<%= meal.name %>">
